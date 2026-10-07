@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#087f5b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="میراث غفور">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="assets/logo-green.png">
+<title>میراث غفور</title>
+<style>
+:root{--g:#087f5b;--g2:#0ca678;--dark:#064b39;--gold:#d6a93a;--cream:#f7fbf8;--text:#17342c;--muted:#668078;--red:#c0392b;--card:#fff;--shadow:0 12px 35px #063c2b18}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#edf8f3,#f9fbf7);color:var(--text);font-family:Tahoma,"Noto Naskh Arabic",Arial,sans-serif}
+.app{max-width:760px;margin:auto;min-height:100vh;padding-bottom:28px}
+.top{background:linear-gradient(135deg,var(--dark),var(--g2));color:white;padding:18px 16px 22px;border-radius:0 0 28px 28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.top:after{content:"";position:absolute;width:220px;height:220px;border:30px solid #ffffff12;border-radius:50%;left:-80px;top:-100px}
+.brand{display:flex;align-items:center;gap:12px;position:relative;z-index:1}.brand img{width:62px;height:62px;border-radius:18px;border:2px solid #ffffffaa}.brand h1{font-size:25px;margin:0}.brand p{margin:4px 0 0;color:#dcf5ea;font-size:12px}
+.hero{margin:16px;background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);position:relative}.hero img{width:100%;height:180px;object-fit:cover;object-position:center 46%;filter:saturate(.85)}.hero .caption{padding:13px 15px}.caption b{color:var(--dark)}.caption small{display:block;color:var(--muted);margin-top:4px}
+.nav{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 16px 14px}.nav button{border:0;background:#e6f4ee;color:var(--dark);padding:11px 5px;border-radius:14px;font-weight:700}.nav button.active{background:var(--g);color:white}
+main{padding:0 16px}.panel{display:none}.panel.active{display:block}
+.card{background:var(--card);border-radius:20px;padding:16px;margin-bottom:13px;box-shadow:var(--shadow);border:1px solid #dcefe7}
+.card h2,.card h3{margin:0 0 12px}.card h2{font-size:18px;color:var(--dark)}.card h3{font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:12px;color:var(--muted);font-weight:700}.field input,.field select{width:100%;border:1px solid #cfe3da;border-radius:12px;padding:12px;background:#fbfefc;font-size:15px;outline:none}.field input:focus,.field select:focus{border-color:var(--g);box-shadow:0 0 0 3px #0ca67818}
+.heirs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.heir{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;background:#f5faf7;border-radius:13px}.heir span{font-size:13px}.heir input{width:70px;padding:8px;border:1px solid #cfe3da;border-radius:9px;text-align:center}
+.btn{width:100%;border:0;border-radius:15px;padding:14px;font-size:16px;font-weight:800;background:linear-gradient(135deg,var(--g),var(--g2));color:white;box-shadow:0 8px 20px #087f5b28}.btn:active{transform:translateY(1px)}
+.result{margin-top:14px}.summary{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{background:#eef8f3;padding:12px;border-radius:14px}.stat b{display:block;font-size:18px;color:var(--dark)}.stat small{color:var(--muted)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #edf2ef}.row:last-child{border-bottom:0}.name{font-weight:700}.share{color:var(--dark);font-weight:800;text-align:left}.tag{display:inline-block;padding:3px 7px;border-radius:99px;font-size:10px;margin-right:5px;background:#e7f6ef;color:var(--g)}.tag.block{background:#fff0ef;color:var(--red)}.note{background:#fff9e8;border-right:4px solid var(--gold);padding:12px;border-radius:12px;font-size:12px;line-height:1.9;color:#5d4b18}.warning{background:#fff0ef;border-right:4px solid var(--red);padding:12px;border-radius:12px;font-size:12px;line-height:1.9;color:#6d2721}
+.search{width:100%;border:1px solid #cfe3da;border-radius:12px;padding:12px;margin-bottom:10px}.guide-item{padding:12px 0;border-bottom:1px solid #edf2ef;line-height:1.8}.guide-item:last-child{border:0}.quran{font-size:13px;background:#f2faf6;border-radius:13px;padding:12px;line-height:2}.footer{text-align:center;color:#799187;font-size:11px;padding:10px 16px}
+@media(max-width:520px){.heirs,.grid{grid-template-columns:1fr 1fr}.hero img{height:155px}.brand h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div class="brand">
+    <img src="assets/logo-green.png" alt="لوگوی میراث غفور">
+    <div><h1>میراث غفور</h1><p>محاسبه ساده و سریع فرایض میراث</p></div>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="assets/ghafor.jpg" alt="غفور">
+  <div class="caption"><b>میراث غفور</b><small>ورثه را انتخاب کن؛ برنامه سهم هر وارث را به‌صورت خودکار محاسبه می‌کند.</small></div>
+</section>
+
+<nav class="nav">
+  <button class="active" data-tab="calc">حساب میراث</button>
+  <button data-tab="heirs">ورثه</button>
+  <button data-tab="guide">راهنما</button>
+</nav>
+
+<main>
+<section id="calc" class="panel active">
+  <div class="card">
+    <h2>۱. معلومات ترکه</h2>
+    <div class="grid">
+      <div class="field"><label>خالص ترکه</label><input id="estate" type="number" min="0" step="0.01" value="100000"></div>
+      <div class="field"><label>واحد پول</label><select id="currency"><option>افغانی</option><option>دالر</option><option>یورو</option><option>مبلغ فرضی</option></select></div>
+    </div>
+    <p class="note">مبلغ را بعد از مصارف تجهیز و تکفین، بدهی‌های ثابت‌شده و وصیت معتبر وارد کنید. برای محاسبه فقط «۱۰۰» هم می‌توانید بنویسید تا سهم‌ها را به شکل نسبتی ببینید.</p>
+  </div>
+
+  <div class="card">
+    <h2>۲. شخص فوت‌شده و اقارب</h2>
+    <div class="field" style="margin-bottom:12px"><label>جنسیت شخص فوت‌شده</label>
+      <select id="deceased"><option value="m">مرد</option><option value="f">زن</option></select>
+    </div>
+    <div class="heirs">
+      <div class="heir"><span>شوهر</span><input id="husband" type="number" min="0" max="1" value="0"></div>
+      <div class="heir"><span>زن/زنان</span><input id="wives" type="number" min="0" max="4" value="0"></div>
+      <div class="heir"><span>پسر</span><input id="sons" type="number" min="0" value="0"></div>
+      <div class="heir"><span>دختر</span><input id="daughters" type="number" min="0" value="0"></div>
+      <div class="heir"><span>پدر</span><input id="father" type="number" min="0" max="1" value="0"></div>
+      <div class="heir"><span>مادر</span><input id="mother" type="number" min="0" max="1" value="0"></div>
+      <div class="heir"><span>جد پدری</span><input id="grandfather" type="number" min="0" max="1" value="0"></div>
+      <div class="heir"><span>مادربزرگ</span><input id="grandmother" type="number" min="0" max="2" value="0"></div>
+      <div class="heir"><span>پسرِ پسر</span><input id="sonsons" type="number" min="0" value="0"></div>
+      <div class="heir"><span>دخترِ پسر</span><input id="sondaughters" type="number" min="0" value="0"></div>
+      <div class="heir"><span>برادر تنی</span><input id="fullbrothers" type="number" min="0" value="0"></div>
+      <div class="heir"><span>خواهر تنی</span><input id="fullsisters" type="number" min="0" value="0"></div>
+      <div class="heir"><span>برادر پدری</span><input id="pbrothers" type="number" min="0" value="0"></div>
+      <div class="heir"><span>خواهر پدری</span><input id="psisters" type="number" min="0" value="0"></div>
+      <div class="heir"><span>برادر مادری</span><input id="mbrothers" type="number" min="0" value="0"></div>
+      <div class="heir"><span>خواهر مادری</span><input id="msisters" type="number" min="0" value="0"></div>
+    </div>
+  </div>
+
+  <button class="btn" id="calculate">محاسبه میراث</button>
+  <div id="result" class="result"></div>
+</section>
+
+<section id="heirs" class="panel">
+  <div class="card">
+    <h2>فهرست ورثه</h2>
+    <input class="search" id="search" placeholder="جستجوی وارث...">
+    <div id="guideHeirs"></div>
+  </div>
+</section>
+
+<section id="guide" class="panel">
+  <div class="card">
+    <h2>مبنای برنامه</h2>
+    <div class="quran">آیات اصلی فرایض میراث در سوره نساء، آیات ۱۱، ۱۲ و ۱۷۶ آمده است. این برنامه سهم‌های مشهور فقه اهل‌سنت را با پیش‌فرض فقه حنفی، رایج در افغانستان، برای حالت‌های متداول محاسبه می‌کند.</div>
+    <div class="guide-item"><b>اول:</b> هزینه‌های لازم تجهیز و تکفین و بدهی‌های معتبر از ترکه کنار گذاشته می‌شود.</div>
+    <div class="guide-item"><b>دوم:</b> وصیت معتبر، در حدود شرعی، قبل از تقسیم اجرا می‌شود.</div>
+    <div class="guide-item"><b>سوم:</b> باقی‌مانده میان ورثه طبق قواعد فرایض تقسیم می‌شود؛ موارد «عَول» و «رَد» نیز در محاسبه لحاظ شده‌اند.</div>
+    <div class="guide-item"><b>هشدار:</b> بعضی مسائل مانند جد با برادران، تعدد جدات، حجب‌های پیچیده و اختلاف فتاوای معاصر می‌تواند حکم متفاوت داشته باشد. این برنامه ابزار محاسباتی است، نه جایگزین فتوا یا حکم محکمه.</div>
+  </div>
+</section>
+</main>
+<div class="footer">میراث غفور • طراحی سبز و طلایی • نسخه HTML قابل اجرا در موبایل</div>
+</div>
+
+<script>
+const ids=['husband','wives','sons','daughters','father','mother','grandfather','grandmother','sonsons','sondaughters','fullbrothers','fullsisters','pbrothers','psisters','mbrothers','msisters'];
+const names={husband:'شوهر',wives:'زن/زنان',sons:'پسر',daughters:'دختر',father:'پدر',mother:'مادر',grandfather:'جد پدری',grandmother:'مادربزرگ',sonsons:'پسرِ پسر',sondaughters:'دخترِ پسر',fullbrothers:'برادر تنی',fullsisters:'خواهر تنی',pbrothers:'برادر پدری',psisters:'خواهر پدری',mbrothers:'برادر مادری',msisters:'خواهر مادری'};
+const val=id=>Number(document.getElementById(id).value||0);
+
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+ b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');
+});
+function f(n,d=1){return n/d}
+function pct(x){return (x*100).toFixed(2)+'%'}
+function money(x){return Number(x||0).toLocaleString('en-US',{maximumFractionDigits:2})}
+
+function calc(){
+ const E=val('estate'), gender=document.getElementById('deceased').value;
+ const h={}; ids.forEach(id=>h[id]=val(id));
+ const warnings=[];
+ if(gender==='m' && h.wives===0){} else if(gender==='m' && h.husband>0){warnings.push('برای شخص فوت‌شده زن، شوهر وارد کنید؛ برای شخص فوت‌شده مرد، زن/زنان وارد می‌شود.');}
+ if(gender==='f' && h.wives>0){warnings.push('برای شخص فوت‌شده زن، تعداد شوهر را وارد کنید و زن/زنان را صفر بگذارید.');}
+ if(gender==='m') h.husband=0; else h.wives=0;
+ const active={}; const blocked={};
+ ids.forEach(id=>{if(h[id]>0)active[id]=0});
+ const hasDesc=(h.sons+h.daughters+h.sonsons+h.sondaughters)>0;
+ const hasMaleDesc=(h.sons+h.sonsons)>0;
+ const sib2=h.fullbrothers+h.fullsisters+h.pbrothers+h.psisters+h.mbrothers+h.msisters>=2;
+
+ // Basic blocking rules, with common Hanafi cases.
+ if(h.sons>0){if(h.sonsons)blocked.sonsons='با وجود پسر';}
+ if(h.sons>0 || h.sonsons>0){if(h.sondaughters){}}
+ if(h.father>0){blocked.grandfather='با وجود پدر'; blocked.fullbrothers='با وجود پدر';blocked.fullsisters='با وجود پدر';blocked.pbrothers='با وجود پدر';blocked.psisters='با وجود پدر';}
+ if(hasMaleDesc){blocked.fullbrothers=blocked.fullbrothers||'با وجود فرزند پسر/نوه پسری';blocked.fullsisters=blocked.fullsisters||'با وجود فرزند پسر/نوه پسری';blocked.pbrothers=blocked.pbrothers||'با وجود فرزند پسر/نوه پسری';blocked.psisters=blocked.psisters||'با وجود فرزند پسر/نوه پسری';}
+ if(hasDesc){blocked.mbrothers='با وجود فرزند/نوه پسری یا دختری';blocked.msisters='با وجود فرزند/نوه پسری یا دختری';}
+ if(h.father||h.grandfather){blocked.mbrothers='با وجود پدر/جد';blocked.msisters='با وجود پدر/جد';}
+ if(h.mother>0){blocked.grandmother='با وجود مادر';}
+ if(h.fullbrothers>0){blocked.pbrothers='با وجود برادر تنی';blocked.psisters='با وجود برادر تنی';}
+ // A son blocks son's children in the common case.
+ if(h.sons>0){blocked.sonsons='با وجود پسر';blocked.sondaughters=blocked.sondaughters||'با وجود پسر';}
+
+ let shares={}; let fixed={};
+ const add=(id, frac, reason)=>{if(h[id]>0 && !blocked[id]){fixed[id]=(fixed[id]||0)+frac}};
+ // Spouse
+ if(gender==='m' && h.wives>0) add('wives',hasDesc?f(1,8):f(1,4));
+ if(gender==='f' && h.husband>0) add('husband',hasDesc?f(1,4):f(1,2));
+ // Mother
+ if(h.mother>0 && !blocked.mother){
+   if(hasDesc || sib2) add('mother',f(1,6));
+   else if((h.husband>0 && h.father>0) || (h.wives>0 && h.father>0)) add('mother',f(1,3)); // adjusted below
+   else add('mother',f(1,3));
+ }
+ // Grandmother(s)
+ if(h.grandmother>0 && !blocked.grandmother) add('grandmother',f(1,6));
+ // Maternal siblings
+ if((h.mbrothers+h.msisters)>0 && !blocked.mbrothers && !blocked.msisters){
+   const n=h.mbrothers+h.msisters;
+   if(n===1){ if(h.mbrothers) add('mbrothers',f(1,6)); else add('msisters',f(1,6));}
+   else {add('mbrothers',f(h.mbrothers,3));add('msisters',f(h.msisters,3));}
+ }
+ // Daughters
+ if(h.daughters>0 && h.sons===0){
+   if(h.daughters===1)add('daughters',f(1,2)); else add('daughters',f(2,3));
+ }
+ // Son's daughters
+ if(h.sondaughters>0 && !blocked.sondaughters && h.sons===0){
+   if(h.sonsons>0){} 
+   else if(h.daughters===0){
+      add('sondaughters',h.sondaughters===1?f(1,2):f(2,3));
+   } else if(h.daughters===1){
+      add('sondaughters',f(1,6));
+   }
+ }
+ // Father fixed portion
+ if(h.father>0){
+   if(hasMaleDesc) add('father',f(1,6));
+   else if(hasDesc) add('father',f(1,6)); // plus residuary below
+ }
+ // Grandfather fixed portion
+ if(h.grandfather>0 && !blocked.grandfather){
+   if(hasMaleDesc) add('grandfather',f(1,6));
+   else if(hasDesc) add('grandfather',f(1,6));
+ }
+ // Full sisters as fixed share when no male ascendant/descendant and no full brother
+ if(h.fullbrothers===0 && h.fullsisters>0 && !blocked.fullsisters && !hasDesc && !h.father && !h.grandfather){
+   if(h.fullsisters===1)add('fullsisters',f(1,2)); else add('fullsisters',f(2,3));
+ }
+ // Paternal sisters
+ if(h.pbrothers===0 && h.psisters>0 && !blocked.psisters && !hasDesc && !h.father && !h.grandfather && h.fullbrothers===0 && h.fullsisters===0){
+   if(h.psisters===1)add('psisters',f(1,2)); else add('psisters',f(2,3));
+ }
+ let fixedTotal=Object.values(fixed).reduce((a,b)=>a+b,0);
+
+ // Umariyyah: mother gets one-third of remainder with spouse + parents only.
+ if(h.mother && h.father && !hasDesc && !sib2 && (h.husband||h.wives)){
+   const spouseShare = fixed[gender==='f'?'husband':'wives']||0;
+   fixed.mother=(1-spouseShare)/3;
+   fixedTotal=Object.values(fixed).reduce((a,b)=>a+b,0);
+ }
+
+ // Residual heirs, common Hanafi order.
+ let residualUnits={};
+ function addRes(id, units){if(h[id]>0 && !blocked[id]) residualUnits[id]=(residualUnits[id]||0)+units}
+ if(h.sons>0){ addRes('sons',2*h.sons); if(h.daughters>0)addRes('daughters',h.daughters); }
+ else if(h.sonsons>0 && !blocked.sonsons){ addRes('sonsons',2*h.sonsons); if(h.sondaughters>0 && !blocked.sondaughters)addRes('sondaughters',h.sondaughters); }
+ else if(h.father>0 && !blocked.father && !hasMaleDesc){ addRes('father',1); }
+ else if(h.grandfather>0 && !blocked.grandfather && !hasMaleDesc){ addRes('grandfather',1); }
+ else if(h.fullbrothers>0 && !blocked.fullbrothers){addRes('fullbrothers',2*h.fullbrothers);if(h.fullsisters>0)addRes('fullsisters',h.fullsisters);}
+ else if(h.pbrothers>0 && !blocked.pbrothers){addRes('pbrothers',2*h.pbrothers);if(h.psisters>0)addRes('psisters',h.psisters);}
+ let resUnits=Object.values(residualUnits).reduce((a,b)=>a+b,0);
+ let remaining=1-fixedTotal;
+ let mode='normal';
+ if(fixedTotal>1+1e-9){ // Aul
+   mode='awl'; const scale=1/fixedTotal; Object.keys(fixed).forEach(k=>fixed[k]*=scale); remaining=0;
+ } else if(resUnits>0 && remaining>1e-9){
+   mode='residuary';
+   Object.entries(residualUnits).forEach(([id,u])=>{shares[id]=(shares[id]||0)+remaining*u/resUnits});
+   remaining=0;
+ }
+ Object.entries(fixed).forEach(([id,v])=>shares[id]=(shares[id]||0)+v);
+
+ // Radd to non-spouse fixed sharers when no residuary.
+ if(remaining>1e-9 && resUnits===0){
+   const eligible=Object.keys(shares).filter(id=>id!=='husband'&&id!=='wives');
+   const s=eligible.reduce((a,id)=>a+shares[id],0);
+   if(s>0){mode='radd';eligible.forEach(id=>shares[id]+=remaining*shares[id]/s);remaining=0;}
+ }
+ // Mark unassigned spouse-only remainder.
+ if(remaining>1e-9){mode='baitulmal';}
+
+ // Include blocked entries only for entered heirs; and validate sex.
+ const rows=[];
+ Object.keys(active).forEach(id=>{
+   if(blocked[id]) rows.push({id,status:'blocked'});
+   else if(shares[id]>0) rows.push({id,status:'share'});
+   else rows.push({id,status:'zero'});
+ });
+ const total=Object.values(shares).reduce((a,b)=>a+b,0);
+ const modeText={normal:'تقسیم عادی',residuary:'تعصیب / باقی‌مانده',awl:'عَول (کاهش نسبی سهم‌ها)',radd:'رَد (بازگشت باقی‌مانده به ورثه دارای سهم)',baitulmal:'باقی‌مانده: نیازمند بررسی حکم بیت‌المال/قانون محل'}[mode];
+ let html='<div class="card"><h2>نتیجه محاسبه</h2>';
+ html+='<div class="summary"><div class="stat"><small>جمع تقسیم‌شده</small><b>'+pct(total)+'</b></div><div class="stat"><small>روش</small><b style="font-size:14px">'+modeText+'</b></div></div>';
+ if(warnings.length) html+='<div class="warning" style="margin-top:10px">'+warnings.join('<br>')+'</div>';
+ html+='<div style="margin-top:8px">';
+ rows.forEach(r=>{
+   const n=names[r.id];
+   if(r.status==='blocked') html+='<div class="row"><div class="name">'+n+' <span class="tag block">محجوب</span></div><div class="share">سهم ندارد<br><small>'+blocked[r.id]+'</small></div></div>';
+   else if(r.status==='share') html+='<div class="row"><div class="name">'+n+'</div><div class="share">'+pct(shares[r.id])+'<br><small>'+money(E*shares[r.id])+' '+document.getElementById('currency').value+'</small></div></div>';
+   else html+='<div class="row"><div class="name">'+n+' <span class="tag block">در این ترکیب سهمی ندارد</span></div><div class="share">0%</div></div>';
+ });
+ if(!rows.length) html+='<p class="note">هیچ وارثی وارد نشده است.</p>';
+ if(remaining>1e-9) html+='<div class="warning" style="margin-top:10px">باقی‌مانده '+pct(remaining)+' ('+money(E*remaining)+' '+document.getElementById('currency').value+') در این مدل به وارثی تخصیص نیافت؛ برای حالت‌های خاص و قانون محل حتماً بررسی فقهی/قانونی شود.</div>';
+ html+='</div></div>';
+ html+='<div class="card"><h3>یادداشت مهم</h3><p class="note">این نسخه بر مبنای قواعد مشهور فرایض اهل‌سنت با پیش‌فرض حنفی و برای حالت‌های رایج ساخته شده است. در پرونده واقعی، نسب دقیق، حیات وارث در زمان فوت، حجب، بدهی، وصیت و قانون کشور باید توسط عالم/مفتی یا کارشناس میراث بررسی شود.</p></div>';
+ document.getElementById('result').innerHTML=html;
+}
+document.getElementById('calculate').onclick=calc;
+ids.forEach(id=>document.getElementById(id).addEventListener('change',()=>{}));
+
+const guide=[
+['شوهر','در صورت فوت زن؛ با وجود فرزند ۱/۴ و بدون فرزند ۱/۲.'],
+['زن/زنان','در صورت فوت مرد؛ با وجود فرزند ۱/۸ و بدون فرزند ۱/۴ به صورت مجموعی.'],
+['پدر','در برخی حالت‌ها ۱/۶ و در صورت نبود فرزند پسر می‌تواند باقیمانده را نیز بگیرد.'],
+['مادر','معمولاً ۱/۶ با وجود فرزند یا دو/چند خواهر و برادر؛ در حالت عادی ۱/۳، با قاعده عمرین استثناهایی دارد.'],
+['پسر و دختر','اگر با هم باشند، در بخش تعصیبی پسر دو برابر دختر می‌گیرد.'],
+['دختر','یک دختر بدون پسر ۱/۲ و دو یا بیشتر ۲/۳ در حالت‌های مقرر.'],
+['جد پدری و نوه‌های پسری','در نبود وارث نزدیک‌تر، طبق قواعد حجب و تعصیب محاسبه می‌شوند.'],
+['خواهر و برادر تنی/پدری','قواعد حجب و تعصیب خاص دارند و ترکیب اقارب مهم است.'],
+['خواهر و برادر مادری','در نبود فرزند و پدر/جد، یک نفر ۱/۶ و دو یا بیشتر ۱/۳ مجموعی می‌گیرند.'],
+['مادربزرگ','در صورت نبود مادر، در حالت‌های مقرر ۱/۶ مجموعی دارد.']
+];
+function renderGuide(filter=''){
+ document.getElementById('guideHeirs').innerHTML=guide.filter(x=>x[0].includes(filter)).map(x=>'<div class="guide-item"><b>'+x[0]+'</b><br>'+x[1]+'</div>').join('');
+}
+document.getElementById('search').oninput=e=>renderGuide(e.target.value.trim());
+renderGuide();
+
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+calc();
+</script>
+</body>
+</html>
